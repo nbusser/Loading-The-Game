@@ -67,7 +67,7 @@ func create_wave():
 
 	#var powerup_spawn_chance = nb_enemies_wave*0.028+0.22
 
-	if randi()%3 != 2:
+	if randi()%4 != 3:
 		spawn_powerup()
 
 	$WaveTimer.wait_time = min(2, nb_enemies_wave)

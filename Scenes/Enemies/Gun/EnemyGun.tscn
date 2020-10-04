@@ -18,6 +18,7 @@ one_shot = true
 one_shot = true
 
 [node name="Gun" type="Node2D" parent="." index="5"]
+position = Vector2( 0.52977, -0.529739 )
 
 [node name="Gunshot" type="AudioStreamPlayer2D" parent="." index="6"]
 stream = ExtResource( 3 )

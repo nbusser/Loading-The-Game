@@ -47,7 +47,7 @@ func _process(delta):
 			
 	if is_shifting:
 		position += shift_per_sec*delta
-		if abs(position.x - shift_obj.x) < 1 and abs(position.y - shift_obj.y) < 1:
+		if abs(position.x - shift_obj.x) < 5 and abs(position.y - shift_obj.y) < 5:
 			is_shifting = false
 
 func _on_ShakeTimer_timeout():

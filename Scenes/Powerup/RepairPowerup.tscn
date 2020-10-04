@@ -6,6 +6,7 @@
 [ext_resource path="res://Scenes/Powerup/repair.oggstr" type="AudioStream" id=4]
 
 [node name="RepairPowerup" instance=ExtResource( 1 )]
+z_index = 0
 script = ExtResource( 2 )
 
 [node name="Sprite" parent="." index="0"]

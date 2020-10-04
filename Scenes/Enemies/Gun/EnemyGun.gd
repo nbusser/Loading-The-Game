@@ -28,13 +28,14 @@ func start(pos, _pos_loading, dir):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	var distance = (pos_loading-position).length()
+	var distance_vect = (pos_loading-position)
+	var distance = distance_vect.length()
 	
 	if nb_blast_to_go == 0:
 		velocity = Vector2(speed, 0).rotated(direction)
 		var collision = move_and_collide(velocity * delta)
 	else:
-		if distance > 1100:
+		if abs(distance_vect.x) > 1100 or abs(distance_vect.y) > 600:
 			velocity = Vector2(speed, 0).rotated(direction)
 			var collision = move_and_collide(velocity * delta)
 		elif nb_blast_to_go == -1:

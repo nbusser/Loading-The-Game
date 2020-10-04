@@ -12,7 +12,7 @@ script = ExtResource( 2 )
 texture = ExtResource( 3 )
 
 [node name="Effect" parent="." index="2"]
-wait_time = 8.0
+wait_time = 10.0
 
 [node name="PowerupSound" parent="." index="4"]
 stream = ExtResource( 4 )

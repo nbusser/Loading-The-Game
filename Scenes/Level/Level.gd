@@ -50,7 +50,7 @@ func _on_Splash_end_splash():
 	$PowerButton/PowerButtonSplash.visible = false
 	$PowerButton/PowerButtonStart.visible = true
 	
-	$Camera2D.zoom(-3, -3, 1)
+	$Camera2D.zoom(-2, -2, 1)
 	$Camera2D.shift(0, -500, 1)
 
 func _on_FleeTimer_timeout():

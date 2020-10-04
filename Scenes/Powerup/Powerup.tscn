@@ -27,6 +27,7 @@ wait_time = 3.0
 one_shot = true
 
 [node name="PowerupSound" type="AudioStreamPlayer2D" parent="."]
+z_index = -1
 volume_db = 19.403
 [connection signal="input_event" from="." to="." method="_on_Powerup_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_Powerup_mouse_entered"]
