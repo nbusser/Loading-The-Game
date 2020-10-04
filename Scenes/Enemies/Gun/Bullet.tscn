@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/Enemies/Gun/rubber.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Enemies/Gun/Bullet.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Loading/parry_bullet.oggstr" type="AudioStream" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[node name="Bullet" type="KinematicBody2D" groups=[
+"bullets",
+]]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.0703982, 0.0703982 )
+texture = ExtResource( 1 )
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2( 5.60084, 2.12179 )
+shape = SubResource( 1 )
+
+[node name="ParrySound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )

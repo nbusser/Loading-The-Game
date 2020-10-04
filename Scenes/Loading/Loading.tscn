@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scenes/Loading/Loading.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Loading/Loading.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Loading/Body.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Loading/defense.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/Loading/hit.wav" type="AudioStream" id=5]
+[ext_resource path="res://Scenes/Loading/loading.ogg" type="AudioStream" id=6]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 154.278
+
+[node name="Loading" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="LoadingSprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+
+[node name="Body" type="KinematicBody2D" parent="."]
+position = Vector2( 2.37842, -2.37842 )
+collision_layer = 15
+collision_mask = 15
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
+shape = SubResource( 1 )
+
+[node name="Head" type="KinematicBody2D" parent="."]
+position = Vector2( 158, 368 )
+collision_layer = 15
+collision_mask = 15
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Head"]
+position = Vector2( -162.762, -361.65 )
+polygon = PoolVector2Array( 416.849, 158.252, 375, 245, 344, 289, 342.8, 289, 280.8, 352, 278.8, 352, 251.7, 374, 249.6, 374, 209.6, 400, 207.5, 400, 165.5, 421, 162.4, 421, 116.4, 438, 112.4, 438, 44.2, 452, 34, 452, -24, 454, -24, 452.3, -38, 446.3, -38, 444.9, -49, 434.9, -49, 432.5, -58, 415.5, -58, 392, -56.3, 392, -48.3, 373, -46.8, 373, -33.8, 360, -31.6, 360, -25.6, 356, 0.799988, 356, 63, 349.2, 63, 348.4, 95, 341.4, 95, 340.6, 136, 326.6, 136, 325.7, 168, 310.8, 168, 309.9, 198, 291.9, 198, 291, 225, 271, 225, 270.1, 255, 242.1, 255, 240.2, 272, 222.1, 272, 220.3, 294, 191.3, 336.551, 121.428, 349.279, 79.0012, 360.593, 6.87631, 349.876, -95.0164, 331.865, -142.692, 293.241, -214.821, 260.651, -252.36, 221.546, -287.841, 166.747, -325.294, 213.467, -403.382, 283.909, -354.658, 330.469, -308.667, 359.355, -277.333, 385.517, -238.089, 418.741, -167.06, 432.514, -115.146, 448.406, -46.2812, 442.617, 84.6581 )
+
+[node name="Defense" type="KinematicBody2D" parent="."]
+visible = false
+rotation = 0.117269
+collision_layer = 15
+collision_mask = 15
+
+[node name="Hitbox" type="CollisionPolygon2D" parent="Defense"]
+position = Vector2( -0.327118, -0.656769 )
+rotation = -0.64151
+scale = Vector2( 1, -1 )
+polygon = PoolVector2Array( 376.2, 245, 375, 245, 344, 289, 342.8, 289, 280.8, 352, 278.8, 352, 251.7, 374, 249.6, 374, 209.6, 400, 207.5, 400, 165.5, 421, 162.4, 421, 116.4, 438, 112.4, 438, 44.2, 452, 34, 452, -24, 454, -24, 452.3, -38, 446.3, -38, 444.9, -49, 434.9, -49, 432.5, -58, 415.5, -58, 392, -56.3, 392, -48.3, 373, -46.8, 373, -33.8, 360, -31.6, 360, -25.6, 356, 0.799988, 356, 63, 349.2, 63, 348.4, 95, 341.4, 95, 340.6, 136, 326.6, 136, 325.7, 168, 310.8, 168, 309.9, 198, 291.9, 198, 291, 225, 271, 225, 270.1, 255, 242.1, 255, 240.2, 272, 222.1, 272, 220.3, 294, 191.3, 294, 189.5 )
+disabled = true
+
+[node name="defense" type="Sprite" parent="Defense"]
+position = Vector2( -66.878, -355.599 )
+rotation = -0.656906
+scale = Vector2( 1, -1 )
+texture = ExtResource( 4 )
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+volume_db = 4.657
+
+[node name="LoadingSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+volume_db = -80.0
+[connection signal="on_hit" from="Body" to="." method="_on_Body_on_hit"]

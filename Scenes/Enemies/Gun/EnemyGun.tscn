@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Enemies/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Enemies/Gun/EnemyGun.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Enemies/Gun/shoot.oggstr" type="AudioStream" id=3]
+
+[node name="EnemyGun" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Hitbox" parent="." index="0"]
+position = Vector2( 62.9461, 86.8175 )
+disabled = true
+
+[node name="TimerBullet" type="Timer" parent="." index="2"]
+one_shot = true
+
+[node name="TimerBlast" type="Timer" parent="." index="3"]
+one_shot = true
+
+[node name="Gun" type="Node2D" parent="." index="5"]
+
+[node name="Gunshot" type="AudioStreamPlayer2D" parent="." index="6"]
+stream = ExtResource( 3 )
+volume_db = 6.985
+[connection signal="timeout" from="TimerBullet" to="." method="_on_TimerBullet_timeout"]
+[connection signal="timeout" from="TimerBlast" to="." method="_on_TimerBlast_timeout"]

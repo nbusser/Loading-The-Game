@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/brouhaha.ogg-dd4388f73039d938b8d62a6f06f08384.oggstr"
+
+[deps]
+
+source_file="res://Scenes/Level/brouhaha.ogg"
+dest_files=[ "res://.import/brouhaha.ogg-dd4388f73039d938b8d62a6f06f08384.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

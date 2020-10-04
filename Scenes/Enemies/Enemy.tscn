@@ -1,0 +1,149 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Scenes/Enemies/new_dynamicfont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scenes/Enemies/Enemy.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Enemies/eyeball.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/Enemies/pupil.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/Enemies/Pupil.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/Enemies/Voice.gd" type="Script" id=6]
+[ext_resource path="res://Scenes/Enemies/Voices/hihi3.oggstr" type="AudioStream" id=7]
+[ext_resource path="res://Scenes/Enemies/Voices/hihi2.oggstr" type="AudioStream" id=8]
+[ext_resource path="res://Scenes/Enemies/Voices/hihi1.oggstr" type="AudioStream" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 5.33049, 6.18801 )
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Node2D
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
+
+[sub_resource type="CircleShape2D" id=3]
+
+[node name="Ennemy" type="KinematicBody2D" groups=[
+"enemies",
+]]
+script = ExtResource( 2 )
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2( 53.5096, 82.7742 )
+scale = Vector2( -10.2722, 9.65728 )
+shape = SubResource( 1 )
+
+[node name="Face" type="Node2D" parent="."]
+
+[node name="RightEyebrow" type="ColorRect" parent="Face"]
+margin_left = 47.9995
+margin_top = 4.94939
+margin_right = 129.999
+margin_bottom = 31.9494
+rect_rotation = -35.266
+color = Color( 0.235294, 0.168627, 0.168627, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LeftEyebrow" type="ColorRect" parent="Face"]
+margin_left = -20.7368
+margin_top = -38.3061
+margin_right = 61.2631
+margin_bottom = -11.3061
+rect_rotation = 29.885
+color = Color( 0.235294, 0.168627, 0.168627, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RightEye" type="Node2D" parent="Face"]
+position = Vector2( 73.188, 35.493 )
+scale = Vector2( 1.665, 1.665 )
+script = SubResource( 2 )
+
+[node name="RightEyeball" type="Area2D" parent="Face/RightEye"]
+collision_layer = 32768
+collision_mask = 2147516416
+
+[node name="RightEyeballSprite" type="Sprite" parent="Face/RightEye/RightEyeball"]
+scale = Vector2( 0.0413143, 0.0413143 )
+z_index = 1
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Face/RightEye/RightEyeball"]
+position = Vector2( -5.07731, -16.3639 )
+polygon = PoolVector2Array( 0.947006, -0.916105, -1.37057, 0.739305, -3.29084, 2.92445, -5.07869, 5.30824, -7.26383, 11.5326, -7.52869, 17.3596, -5.60842, 26.2326, -2.03274, 31.861, 2.63029, 34.2011, 6.41861, 34.2713, 10.2069, 33.3593, 13.9952, 29.6411, 16.3103, 24.3796, 17.5029, 19.1882, 17.4328, 12.243, 15.6789, 6.49034, 13.1534, 1.93034, 9.0143, -1.15644, 4.80507, -1.99828, 2.48999, -1.78782, 1.12996, -1.00484, 1.5724, 0.130756, 2.50466, -0.30484, 3.81859, -0.665712, 5.91281, -0.69521, 7.24014, -0.444492, 8.5527, 0.13068, 10.1959, 1.13424, 11.9197, 2.788, 13.3978, 4.81598, 14.3438, 6.81311, 15.1322, 8.38979, 15.7628, 11.3329, 16.2884, 13.4352, 16.3935, 15.59, 16.1945, 19.7994, 15.1565, 24.2814, 13.6005, 27.5922, 12.0758, 29.7719, 9.48957, 32.1079, 7.27874, 33.1924, 4.15021, 33.5678, 1.98109, 32.8587, -0.730301, 31.1902, -3.10798, 28.2702, -4.73482, 24.8497, -5.65252, 21.8046, -6.1948, 17.8835, -6.16575, 14.7132, -5.66969, 11.1912, -4.6186, 7.37845, -3.19494, 4.7629, -1.10912, 1.9487, 0.736877, 0.605185, 1.45596, 0.184261 )
+
+[node name="RightPupil" type="KinematicBody2D" parent="Face/RightEye"]
+collision_layer = 32768
+collision_mask = 32768
+script = ExtResource( 5 )
+
+[node name="RightPupilSprite" type="Sprite" parent="Face/RightEye/RightPupil"]
+scale = Vector2( 0.0306093, 0.0306093 )
+z_index = 1
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Face/RightEye/RightPupil"]
+shape = SubResource( 3 )
+
+[node name="LeftEye" type="Node2D" parent="Face"]
+position = Vector2( 18.1015, 35.4934 )
+scale = Vector2( 1.66495, 1.66495 )
+script = SubResource( 2 )
+
+[node name="LeftEyeball" type="Area2D" parent="Face/LeftEye"]
+collision_layer = 32768
+collision_mask = 2147516416
+
+[node name="LeftEyeballSprite" type="Sprite" parent="Face/LeftEye/LeftEyeball"]
+scale = Vector2( 0.0413143, 0.0413143 )
+z_index = 1
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Face/LeftEye/LeftEyeball"]
+position = Vector2( -5.07731, -16.3639 )
+polygon = PoolVector2Array( 0.947006, -0.916105, -1.37057, 0.739305, -3.29084, 2.92445, -5.07869, 5.30824, -7.26383, 11.5326, -7.52869, 17.3596, -5.60842, 26.2326, -2.03274, 31.861, 2.63029, 34.2011, 6.41861, 34.2713, 10.2069, 33.3593, 13.9952, 29.6411, 16.3103, 24.3796, 17.5029, 19.1882, 17.4328, 12.243, 15.6789, 6.49034, 13.1534, 1.93034, 9.0143, -1.15644, 4.80507, -1.99828, 2.48999, -1.78782, 1.12996, -1.00484, 1.5724, 0.130756, 2.50466, -0.30484, 3.81859, -0.665712, 5.91281, -0.69521, 7.24014, -0.444492, 8.5527, 0.13068, 10.1959, 1.13424, 11.9197, 2.788, 13.3978, 4.81598, 14.3438, 6.81311, 15.1322, 8.38979, 15.7628, 11.3329, 16.2884, 13.4352, 16.3935, 15.59, 16.1945, 19.7994, 15.1565, 24.2814, 13.6005, 27.5922, 12.0758, 29.7719, 9.48957, 32.1079, 7.27874, 33.1924, 4.15021, 33.5678, 1.98109, 32.8587, -0.730301, 31.1902, -3.10798, 28.2702, -4.73482, 24.8497, -5.65252, 21.8046, -6.1948, 17.8835, -6.16575, 14.7132, -5.66969, 11.1912, -4.6186, 7.37845, -3.19494, 4.7629, -1.10912, 1.9487, 0.736877, 0.605185, 1.45596, 0.184261 )
+
+[node name="LeftPupil" type="KinematicBody2D" parent="Face/LeftEye"]
+collision_layer = 32768
+collision_mask = 32768
+script = ExtResource( 5 )
+
+[node name="LeftPupilSprite" type="Sprite" parent="Face/LeftEye/LeftPupil"]
+scale = Vector2( 0.0306093, 0.0306093 )
+z_index = 1
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Face/LeftEye/LeftPupil"]
+shape = SubResource( 3 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = -0.0737381
+margin_top = 0.0294952
+margin_right = 128.926
+margin_bottom = 235.029
+rect_scale = Vector2( 1.08428, 1.02738 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "D"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Voice" type="AudioStreamPlayer2D" parent="."]
+max_distance = 9000.0
+script = ExtResource( 6 )
+sounds = [ ExtResource( 9 ), ExtResource( 8 ), ExtResource( 7 ) ]

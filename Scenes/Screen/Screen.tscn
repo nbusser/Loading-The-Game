@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scenes/Loading/Loading.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Enemies/EnemyHandler.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Screen/Screen.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Enemies/new_dynamicfont.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Scenes/Screen/screen.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/Screen/glass.oggstr" type="AudioStream" id=6]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.411765, 0.607843, 0.776471, 1 )
+corner_radius_top_left = 75
+corner_radius_top_right = 75
+corner_radius_bottom_right = 75
+corner_radius_bottom_left = 75
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.796078, 0.835294, 0.870588, 1 )
+corner_radius_top_left = 75
+corner_radius_top_right = 75
+corner_radius_bottom_right = 75
+corner_radius_bottom_left = 75
+
+[node name="Screen" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Loading" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1440, 810 )
+scale = Vector2( 0.6, 0.6 )
+z_index = 1
+
+[node name="ScreenSprite" type="Sprite" parent="."]
+position = Vector2( 1442.5, 808.93 )
+scale = Vector2( 1.03161, 1 )
+texture = ExtResource( 5 )
+
+[node name="EnemyHandler" parent="." instance=ExtResource( 2 )]
+z_index = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+anchor_right = 0.387
+margin_left = 1010.56
+margin_top = 1323.12
+margin_right = 2010.56
+margin_bottom = 1500.12
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+custom_fonts/font = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GlassSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+volume_db = 24.0

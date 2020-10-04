@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Enemies/Cutscene/roboto_mono.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scenes/Enemies/Cutscene/CutsceneEnemy.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Enemies/Enemy.tscn" type="PackedScene" id=3]
+
+[node name="Ennemy" instance=ExtResource( 3 )]
+script = ExtResource( 2 )
+
+[node name="Hitbox" parent="." index="0"]
+disabled = true
+
+[node name="Face" parent="." index="1"]
+visible = false
+
+[node name="RightEyebrow" parent="Face" index="0"]
+margin_left = 50.2146
+margin_top = 4.63914
+margin_right = 114.215
+margin_bottom = 28.6391
+rect_rotation = -47.5714
+
+[node name="LeftEyebrow" parent="Face" index="1"]
+margin_left = 4.01014
+margin_top = -42.5633
+margin_right = 68.0101
+margin_bottom = -18.5633
+rect_rotation = 47.6
+
+[node name="RightEye" parent="Face" index="2"]
+position = Vector2( 65.648, 35.493 )
+
+[node name="LeftEye" parent="Face" index="3"]
+position = Vector2( 24.0543, 35.4934 )
+
+[node name="Label" parent="." index="2"]
+margin_left = 2.44894
+margin_top = -24.3565
+margin_right = 131.449
+margin_bottom = 210.643
+custom_fonts/font = ExtResource( 1 )

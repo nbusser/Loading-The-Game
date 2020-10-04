@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Powerup/Powerup.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 79.3541, 86.558 )
+
+[node name="Powerup" type="Area2D"]
+scale = Vector2( 1.55043, 1.55043 )
+z_index = 1
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.171331, 0.171331 )
+z_index = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+shape = SubResource( 1 )
+
+[node name="Effect" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="PickupLifetime" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="PowerupSound" type="AudioStreamPlayer2D" parent="."]
+volume_db = 19.403
+[connection signal="input_event" from="." to="." method="_on_Powerup_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_Powerup_mouse_entered"]
+[connection signal="timeout" from="Effect" to="." method="_on_Effect_timeout"]
+[connection signal="timeout" from="PickupLifetime" to="." method="_on_PickupLifetime_timeout"]

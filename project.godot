@@ -15,8 +15,18 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Ld 47"
-config/icon="res://icon.png"
+config/name="LoadingTheGame"
+config/description="Compo LD47"
+run/main_scene="res://Scenes/Level/Level.tscn"
+config/icon="res://Scenes/Loading/Loading.png"
+
+[input]
+
+restart={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [rendering]
 
